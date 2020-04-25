@@ -30,19 +30,24 @@ class MealPlan::CLI
 
   def get_user_keyword
     keyword = gets.strip.capitalize
-    show_recipes_for(keyword) if valid_input(keyword, @keywords)
+    if valid_input(keyword, @keywords)
+      show_recipes_for(keyword)
+    else
+      puts "Try a different keyword."
+    end
+      # binding.pry
   end
 
   def valid_input(input, data)
-    data.include?(input)
+    data.each {|tag| tag.name == input}
   end
 
   def show_recipes_for(keyword)
     puts "Here are recipes for #{keyword}"
     # binding.pry
-    MealPlan::Tag.all.each.with_index(1) do |tag|
-      puts tag.name
-    end
+    # MealPlan::Tag.all.each.with_index(1) do |tag|
+    #   puts tag.name
+    # end
   end
 
 end
