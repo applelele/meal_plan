@@ -15,7 +15,7 @@ class MealPlan::CLI
   end
 
   def get_exist_keywords
-    @keywords = ["Kebab", "Turmeric", "Szechuan", "Cheese", "Egg", "Lamb", "Pasta"]
+    @keywords = MealPlan::Tag.all
   end
 
   def get_list_keywords
@@ -37,8 +37,8 @@ class MealPlan::CLI
   def show_recipes_for(keyword)
     puts "Here are recipes for #{keyword}"
     # binding.pry
-    MealPlan::Recipe.all.each.with_index(1) do |recipe|
-      puts recipe.name
+    MealPlan::Tag.all.each.with_index(1) do |tag|
+      puts tag.name
     end
   end
 
