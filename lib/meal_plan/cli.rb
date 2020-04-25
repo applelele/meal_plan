@@ -2,7 +2,7 @@ class MealPlan::CLI
   attr_accessor :keywords
 
   def call
-    puts "Welcome to Meal Plan"
+    puts "Which menu will be your dinner tonight?"
     # binding.pry
     # get_exist_keywords
     # get_list_keywords
@@ -11,6 +11,7 @@ class MealPlan::CLI
     # list_recipes
     get_exist_keywords
     get_list_keywords
+    get_user_keyword
   end
 
   def get_exist_keywords
@@ -25,7 +26,20 @@ class MealPlan::CLI
   end
 
   def get_user_keyword
-    keyword = gets.strip
+    keyword = gets.strip.capitalize
+    show_recipes_for(keyword) if valid_input(keyword, @keywords)
+  end
+
+  def valid_input(input, data)
+    data.include?(input)
+  end
+
+  def show_recipes_for(keyword)
+    puts "Here are recipes for #{keyword}"
+    # binding.pry
+    MealPlan::Recipe.all.each.with_index(1) do |recipe|
+      puts recipe.name
+    end
   end
 
 end
