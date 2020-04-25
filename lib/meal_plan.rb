@@ -6,6 +6,7 @@ require_relative "./meal_plan/scraper"
 
 require "pry"
 require "nokogiri"
+require "open-uri"
 
 module MealPlan
   class Error < StandardError; end

@@ -13,6 +13,7 @@ class MealPlan::Tag
   end
 
   def self.all
+    MealPlan::Scraper.scrape_tag if @@all.empty?
     @@all
   end
 end

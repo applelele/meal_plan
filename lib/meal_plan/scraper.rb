@@ -1,6 +1,7 @@
 class MealPlan::Scraper
-  def scrape_tag
-    url = https://food52.com/sitemap
-    doc = Nokogiri::HTML(open(url))
+  def self.scrape_tag
+    url = open("https://food52.com/sitemap")
+    doc = Nokogiri::HTML(url)
+    # binding.pry
   end
 end
