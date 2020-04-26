@@ -14,7 +14,14 @@ class MealPlan::Scraper
   def self.scrape_recipes(tag)
     direction = tag.name.gsub(" ", "-")
     url = open("https://food52.com/tags/#{direction}")
-    MealPlan::Recipes.new(name, tag, teaser)
+    doc = Nokogiri::HTML(url)
+    posts = doc.css(".tag-post")
+    posts.each do |p|
+      p.name = doc.css(".tag-post__header").text
+      p.tag = doc.css(".tag-post__rubric").text
+      p.teaser = doc.css(".tag-post__teaser").text
+      MealPlan::Recipes.new(name, tag, teaser)
+    end
   end
 
 end
