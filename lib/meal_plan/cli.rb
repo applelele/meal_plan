@@ -53,6 +53,7 @@ class MealPlan::CLI
 
     tag = @keywords.find {|k| k.name == keyword} # get an instance object & assign it to tag
     tag.get_recipes
+    # binding.pry
     puts "Here are recipes for #{keyword}"
     tag.recipes.each.with_index(1) do |recipe, index|
       puts "#{index}. [#{recipe.tag.name}] #{recipe.name}\n#{recipe.cuisine}\n#{recipe.teaser}\nView the recipe => #{recipe.url}\n\n"
@@ -62,6 +63,7 @@ class MealPlan::CLI
 
   def done
     puts "Hope you found a recipe good fit you, Please enter exit if you are done."
+    @input = gets.strip
   end
 
   def goodbye
