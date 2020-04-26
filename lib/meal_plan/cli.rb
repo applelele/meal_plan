@@ -48,7 +48,7 @@ class MealPlan::CLI
 
   def show_recipes_for(keyword)
 
-    tag = @keywords.find {|k| k.name == keyword} # tag == instance object
+    tag = @keywords.find {|k| k.name == keyword} # get an instance object & assign it to tag
     tag.get_recipes
     puts "Here are recipes for #{keyword}"
     tag.recipes.each.with_index(1) do |recipe, index|

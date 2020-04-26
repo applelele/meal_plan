@@ -1,7 +1,7 @@
 class MealPlan::Tag
+  attr_accessor :name, :recipes
   @@all = []
   # ["Kebab", "Turmeric", "Szechuan", "Cheese", "Egg", "Lamb", "Pasta"]
-  attr_accessor :name, :recipes
 
   def initialize(name)
     @name = name

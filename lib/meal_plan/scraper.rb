@@ -16,14 +16,11 @@ class MealPlan::Scraper
     url = open("https://food52.com/tags/#{direction}")
     doc = Nokogiri::HTML(url)
     posts = doc.css(".tag-post")
-    i = 1
-    until i == posts.count
-      binding.pry
-      name = doc.css(".tag-post:nth-child(i) .tag-post__header").text.strip
-      tag = doc.css(".tag-post:nth-child(i) .tag-post__rubric").text.strip
-      teaser = doc.css(".tag-post:nth-child(i) .tag-post__teaser").text.strip
-      MealPlan::Recipe.new(name, tag, teaser)
-      i += 1
+    posts.each do |p|
+        name = p.css(".tag-post__header").text.strip
+        tag = p.css(".tag-post__rubric").text.strip
+        teaser = p.css(".tag-post__teaser").text.strip
+        MealPlan::Recipe.new(name, tag, teaser)
     end
   end
 

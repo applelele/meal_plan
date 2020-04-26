@@ -16,7 +16,7 @@ class MealPlan::Recipe
 
   def add_recipes_to_tag
     # binding.pry
-    @tag.recipes << self unless @tag.recipes.include?(self)
+    tag.recipes << self unless tag.recipes.include?(self)
     # self = #<MealPlan::Recipes:0x000000000275d148 @name="", @tag="", @teaser="">
   end
 
