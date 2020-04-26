@@ -1,4 +1,5 @@
 class MealPlan::Scraper
+
   def self.scrape_tag
     url = open("https://food52.com/sitemap")
     doc = Nokogiri::HTML(url)
@@ -9,4 +10,10 @@ class MealPlan::Scraper
      MealPlan::Tag.new(name)
     end
   end
+
+  def self.scrape_recipes(tag)
+    MealPlan::Recipes.new("Tomato Bread", tag)
+    MealPlan::Recipes.new("Squash Soup", tag)
+  end
+
 end

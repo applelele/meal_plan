@@ -35,7 +35,7 @@ class MealPlan::CLI
     else
       puts "Try a different keyword."
     end
-      # binding.pry
+
   end
 
   def valid_input(input, data)
@@ -44,7 +44,9 @@ class MealPlan::CLI
 
   def show_recipes_for(keyword)
     puts "Here are recipes for #{keyword}"
-    # binding.pry
+    tag = @keywords.find {|k| k.name == keyword}
+    recipes = tag.recipes
+    binding.pry
     # MealPlan::Tag.all.each.with_index(1) do |tag|
     #   puts tag.name
     # end
