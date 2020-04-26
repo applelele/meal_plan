@@ -1,6 +1,6 @@
 class MealPlan::Scraper
 
-  def self.scrape_tag
+  def self.scrape_tags
     url = open("https://food52.com/sitemap")
     doc = Nokogiri::HTML(url)
     # binding.pry
@@ -16,11 +16,14 @@ class MealPlan::Scraper
     url = open("https://food52.com/tags/#{direction}")
     doc = Nokogiri::HTML(url)
     posts = doc.css(".tag-post")
-    posts.each do |p|
-      p.name = doc.css(".tag-post__header").text
-      p.tag = doc.css(".tag-post__rubric").text
-      p.teaser = doc.css(".tag-post__teaser").text
-      MealPlan::Recipes.new(name, tag, teaser)
+    i = 1
+    until i == posts.count
+      binding.pry
+      name = doc.css(".tag-post:nth-child(i) .tag-post__header").text.strip
+      tag = doc.css(".tag-post:nth-child(i) .tag-post__rubric").text.strip
+      teaser = doc.css(".tag-post:nth-child(i) .tag-post__teaser").text.strip
+      MealPlan::Recipe.new(name, tag, teaser)
+      i += 1
     end
   end
 

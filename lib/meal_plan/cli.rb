@@ -9,9 +9,13 @@ class MealPlan::CLI
     # get_user_keyword
     # get_recipes
     # list_recipes
-    get_exist_keywords
-    get_list_keywords
-    get_user_keyword
+    @input = ""
+    until @input == "exit"
+      get_exist_keywords
+      get_list_keywords
+      get_user_keyword
+    end
+    goodbye
   end
 
   def get_exist_keywords
@@ -23,8 +27,8 @@ class MealPlan::CLI
 
   def get_list_keywords
     puts "Choose a keyword to see a recipe"
-    @keywords.each.with_index(1) do |keyword, index|
-      puts "#{index}. #{keyword.name}"
+    @keywords.each do |keyword|
+      puts "- #{keyword.name}"
     end
   end
 
@@ -53,6 +57,10 @@ class MealPlan::CLI
     # MealPlan::Tag.all.each.with_index(1) do |tag|
     #   puts tag.name
     # end
+  end
+
+  def goodbye
+    puts "Enjoy the meal!"
   end
 
 end
