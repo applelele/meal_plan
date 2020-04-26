@@ -18,9 +18,11 @@ class MealPlan::Scraper
     posts = doc.css(".tag-post")
     posts.each do |p|
         name = p.css(".tag-post__header").text.strip
-        tag = p.css(".tag-post__rubric").text.strip
+        cuisine = p.css(".tag-post__rubric").text.strip
         teaser = p.css(".tag-post__teaser").text.strip
-        MealPlan::Recipe.new(name, tag, teaser)
+        link = p.css(".tag-post__header a").attr("href").value
+        url = "https://food52.com#{link}"
+        MealPlan::Recipe.new(name, tag, cuisine, teaser, url)
     end
   end
 

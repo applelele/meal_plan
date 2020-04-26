@@ -14,6 +14,7 @@ class MealPlan::CLI
       get_exist_keywords
       get_list_keywords
       get_user_keyword
+      done
     end
     goodbye
   end
@@ -26,9 +27,11 @@ class MealPlan::CLI
   end
 
   def get_list_keywords
-    puts "Choose a keyword to see a recipe"
+    puts "Type a keyword to see a recipe"
     @keywords.each do |keyword|
       puts "- #{keyword.name}"
+    # @keywords.each do |keyword|
+    #   puts "- #{keyword.name}"
     end
   end
 
@@ -52,11 +55,13 @@ class MealPlan::CLI
     tag.get_recipes
     puts "Here are recipes for #{keyword}"
     tag.recipes.each.with_index(1) do |recipe, index|
-      puts "#{index}. #{recipe.name}\n#{recipe.tag.name}\n#{recipe.teaser}"
+      puts "#{index}. [#{recipe.tag.name}] #{recipe.name}\n#{recipe.cuisine}\n#{recipe.teaser}\nView the recipe => #{recipe.url}\n\n"
     end
-    # MealPlan::Tag.all.each.with_index(1) do |tag|
-    #   puts tag.name
-    # end
+
+  end
+
+  def done
+    puts "Hope you found a recipe good fit you, Please enter exit if you are done."
   end
 
   def goodbye

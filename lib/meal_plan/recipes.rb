@@ -1,11 +1,13 @@
 class MealPlan::Recipe
   @@all = []
-  attr_accessor :name, :tag, :teaser
+  attr_accessor :name, :tag, :cuisine, :teaser, :url
 
-  def initialize(name, tag, teaser = nil)
+  def initialize(name, tag, cuisine, teaser = nil, url)
     @name = name
     @tag = tag
+    @cuisine = cuisine
     @teaser = teaser
+    @url = url
     add_recipes_to_tag
     save
   end
