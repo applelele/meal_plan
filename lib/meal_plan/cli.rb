@@ -43,10 +43,13 @@ class MealPlan::CLI
   end
 
   def show_recipes_for(keyword)
+
+    tag = @keywords.find {|k| k.name == keyword} # tag == instance object
+    tag.get_recipes
     puts "Here are recipes for #{keyword}"
-    tag = @keywords.find {|k| k.name == keyword}
-    recipes = tag.recipes
-    binding.pry
+    tag.recipes.each.with_index(1) do |recipe, index|
+      puts "#{index}. #{recipe.name}\n#{recipe.tag.name}\n#{recipe.teaser}"
+    end
     # MealPlan::Tag.all.each.with_index(1) do |tag|
     #   puts tag.name
     # end

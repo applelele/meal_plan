@@ -12,8 +12,9 @@ class MealPlan::Scraper
   end
 
   def self.scrape_recipes(tag)
-    MealPlan::Recipes.new("Tomato Bread", tag)
-    MealPlan::Recipes.new("Squash Soup", tag)
+    direction = tag.name.gsub(" ", "-")
+    url = open("https://food52.com/tags/#{direction}")
+    MealPlan::Recipes.new(name, tag, teaser)
   end
 
 end

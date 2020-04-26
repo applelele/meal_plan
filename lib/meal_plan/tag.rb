@@ -1,8 +1,7 @@
 class MealPlan::Tag
   @@all = []
   # ["Kebab", "Turmeric", "Szechuan", "Cheese", "Egg", "Lamb", "Pasta"]
-  attr_accessor :name
-  attr_writer :recipes
+  attr_accessor :name, :recipes
 
   def initialize(name)
     @name = name
@@ -15,11 +14,9 @@ class MealPlan::Tag
     @@all
   end
 
-  def recipes
-    # binding.pry
+  def get_recipes
     MealPlan::Scraper.scrape_recipes(self) if @recipes.empty?
     # self == #<MealPlan::Tag:0x0000000002cff128 @name="Taco">
-    MealPlan::Recipes.all
   end
 
   def save

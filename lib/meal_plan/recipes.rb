@@ -6,11 +6,17 @@ class MealPlan::Recipes
     @name = name
     @tag = tag
     @teaser = teaser
+    add_recipes_to_tag
     save
   end
 
   def self.all
     @@all
+  end
+
+  def add_recipes_to_tag
+    # binding.pry
+    @tag.recipes << self unless @tag.recipes.include?(self)
   end
 
   def save
