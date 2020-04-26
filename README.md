@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Type what you would like to cook tonight. We will seach the best recipes for you.
 
 ## Development
 
