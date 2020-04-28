@@ -9,7 +9,7 @@ class MealPlan::CLI
     # get_user_keyword
     # get_recipes
     # list_recipes
-    @input = ""
+    @input = "list"
     until @input == "exit"
       get_exist_keywords
       get_list_keywords
@@ -62,7 +62,7 @@ class MealPlan::CLI
   end
 
   def done
-    puts "Hope you found a recipe good fit you, Please enter exit if you are done."
+    puts "Please type list to see menu again or type exit if you are done."
     @input = gets.strip
   end
 
