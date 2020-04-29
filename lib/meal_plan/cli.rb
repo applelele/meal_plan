@@ -9,7 +9,7 @@ class MealPlan::CLI
     # get_user_keyword
     # get_recipes
     # list_recipes
-    @input = "list"
+    @input = nil
     until @input == "exit"
       get_exist_keywords
       get_list_keywords
