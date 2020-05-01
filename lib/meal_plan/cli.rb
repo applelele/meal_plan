@@ -30,8 +30,6 @@ class MealPlan::CLI
     puts "Type a keyword to see a recipe"
     @keywords.each do |keyword|
       puts "- #{keyword.name}"
-    # @keywords.each do |keyword|
-    #   puts "- #{keyword.name}"
     end
   end
 
@@ -58,7 +56,7 @@ class MealPlan::CLI
     tag.recipes.each.with_index(1) do |recipe, index|
       puts "#{index}. [#{recipe.tag.name}] #{recipe.name}\n#{recipe.cuisine}\n#{recipe.teaser}\nView the recipe => #{recipe.url}\n\n"
     end
-
+binding.pry
   end
 
   def done

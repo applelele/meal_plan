@@ -24,6 +24,7 @@ class MealPlan::Scraper
         url = "https://food52.com#{link}"
         MealPlan::Recipe.new(name, tag, cuisine, teaser, url)
     end
+    # binding.pry
   end
 
 end

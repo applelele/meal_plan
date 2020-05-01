@@ -16,8 +16,9 @@ class MealPlan::Tag
 
   def get_recipes
     # binding.pry
-    MealPlan::Scraper.scrape_recipes(self) #if @recipes.empty?
+    MealPlan::Scraper.scrape_recipes(self) if @recipes.empty?
     # self ===> #<MealPlan::Tag:0x0000000001a56170 @name="Taco", @recipes=[]>
+    # Returns Nokogiri nodes => [#<Nokogiri::XML::Element:0x19f4e5c name="div" attributes=[#<Nokogiri::XML
   end
 
   def save
