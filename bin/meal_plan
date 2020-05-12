@@ -5,3 +5,22 @@
 require_relative "../lib/meal_plan"
 
 MealPlan::CLI.new.call
+
+
+# How do we load the file in lib/meal_plan.rb?
+# require_relative
+# require
+  # - It seems to look at directories that are in your $LOAD_PATH
+
+# load
+# $LOAD_PATH << "/Users/applelele1/loading_files_ruby/lib"
+
+# require does not work with relative paths because your current directory is not in your $LOAD_PATH
+
+# require "../lib/meal_plan" - because one, bin/meal_plan, so it should ../lib/meal_plan - this is still re;ative
+# require "/Users/applelele1/loading_files_ruby/lib/meal_plan"
+# require "./lib/meal_plan" . the current directory
+
+# Rule of Thumb
+# Don't alter $LOAD_PATH
+# Use require to load gems only!
